@@ -1,0 +1,75 @@
+<div class="section list">
+	<div class="section form" th:if="${detail}"
+		style="display: block; text-align: center;"></div>
+	<div class="section form" th:unless="${detail}"
+		style="display: block; text-align: center;"></div>
+	<div th:if="${items}">
+		<div th:each="item : ${items}">
+			<div class="container px-5 mb-5">
+				<a th:href="@{/detail(bdSeq = ${item.bdSeq})}">
+					<div class="col-lg-11 col-xl-9 col-xxl-8">
+						<div class="card overflow-hidden shadow rounded-4 border-0 mb-5"
+							style="width: 1095px;">
+							<div class="card-body p-0">
+								<div class="d-flex align-items-center">
+									<img class="imgId" th:src="${item.files}"
+										style="width: 300px; height: 400px;" />
+									<div class="p-5">
+										<h2 class="fw-bolder">
+											<a a th:text="${item.bdTitle}"></a>
+										</h2>
+										<p>
+										<div th:text="${item.bdContent}" />
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<th:block th:include="board/commentitem.html"></th:block>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	<th:block th:if="${detail}">
+		<div class="justify-content-center">
+			<div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+				<div class="card-body p-0">
+					<h1 style="padding: 30px 0; margin-left: 50px"
+						th:text="${detail.bdTitle}"></h1>
+
+					<div style="text-align: right; margin-right: 50px">
+						<span style="color: #00a2be"> | </span> <span
+							style="color: #00a2be">글쓴이 </span> <span th:text="${detail.mbId}"></span>
+
+					</div>
+
+					<div class="d-flex align-items-center">
+						<div>
+							<p style="padding: 30px 0; margin-left: 50px"
+								th:text="${detail.bdContent}"></p>
+							<ul th:if="${files}" th:each="file : ${files}"
+								style="display: inline-block; margin-bottom: 5px; margin-left: 80px">
+								<li><img id="imgId" th:src="@{${file.upNewFileName}}"
+									alt="첨부이미지" height="280" /></li>
+							</ul>
+						</div>
+					</div>
+					<th:block th:if="${detail.mbId == session.id}">
+						<div
+							style="padding: 30px 0; text-align: right; margin-right: 60px">
+							<a th:href="@{/edit(bdSeq = ${detail.bdSeq})}"><button
+									class="btn btn-outline-dark">수정</button></a> <a
+								th:href="@{/remove(bdSeq = ${detail.bdSeq})}"><button
+									class="btn btn-outline-dark">삭제</button></a> <a th:href="@{bdList}"><button
+									style="margin-left: 20px" class="btn btn-primary">목록으로</button></a>
+					</th:block>
+				</div>
+			</div>
+		</div>
+		<th:block th:include="board/commentdetail.html"></th:block>
+	</th:block>
+
+</div>

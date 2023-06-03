@@ -1,0 +1,18 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 30vh;">
+    <form role="form" action="create" method="post" enctype="multipart/form-data">
+        <input class="form-control" type="hidden" name="seq" placeholder="글번호" required />
+        <div class="form-floating mb-3" style="width: 800px;">
+            <input class="form-control" name="id" id="id" placeholder="Enter id..." required />
+            <label for="name">아이디</label>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A id is required.</div>
+        </div>
+        <div class="form-floating mb-3" style="width: 800px;">
+            <input class="form-control" name="pw" id="pw" placeholder="Enter pw..." required />
+            <label for="name">패스워드</label>
+            <div class="invalid-feedback" data-sb-feedback="name:required">A password is required.</div>
+        </div>
+        <div class="button" style="display: flex; justify-content: center;">
+            <button class="btn btn-primary btn-lg" type="submit" style="display: flex; justify-content: center;">추가하기</button>
+        </div>
+    </form>
+</div>

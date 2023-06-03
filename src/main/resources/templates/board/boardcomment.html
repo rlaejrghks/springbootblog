@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
+<head>
+<title>main page</title>
+</head>
+<div layout:fragment="content" th:if=${session.id}>
+	<body class="d-flex flex-column h-100 bg-light">
+		<main class="flex-shrink-0">
+			<!-- Projects Section-->
+			<section class="py-5">
+				<div class="container px-5 mb-5">
+					<div class="card overflow-hidden shadow rounded-4 border-0 mb-5"
+						style="width: 1220px; height: 450px;">
+						<div class="card-body p-0"
+							style="justify-content: center; align-items: center;">
+							<br>
+							<div class="title"
+								style="color: #00a2be; text-align: center; font-size: 30px; font-weight: bold;">글쓰기</div>
+							<br>
+							<div class="container"
+								style="justify-content: center; align-items: center;">
+								<th:block th:include="board/clause.html"></th:block>
+							</div>
+						</div>
+					</div>
+					<div class="row gx-10 justify-content-center" th:if="${detail}">
+						<div class="col-lg-11 col-xl-9 col-xxl-8">
+							<div class="container">
+								<th:block th:include="board/list.html"></th:block>
+								<th:block th:include="board/commentlistEdit.html"></th:block>
+							</div>
+						</div>
+					</div>
+					<div class="row gx-5" th:unless="${detail}">
+						<div class="col-lg-11 col-xl-9 col-xxl-8">
+							<div class="container">
+								<th:block th:include="board/boardlist.html"></th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

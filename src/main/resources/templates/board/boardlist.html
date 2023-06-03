@@ -1,0 +1,32 @@
+<div class="section list">
+    <div class="section form" th:if="${detail}"
+        style="display: grid; place-items: center;"></div>
+    <div class="section form" th:unless="${detail}"
+        style="display: grid; place-items: center;"></div>
+    <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 justify-content-center"
+        style="width: 1095px; margin-left: 50px;">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>제목</th>
+                            <th>아이디</th>
+                            <th>등록일</th>
+                            <th>수정일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${items}">
+                            <td><a a th:text="${item.bdTitle}"
+                                    th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
+                            <td th:text="${item.mbId}"></td>
+                            <td th:text="${item.bdCreateAt}"></td>
+                            <td th:text="${item.bdUpdateAt}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

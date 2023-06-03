@@ -1,0 +1,42 @@
+<div class="section list">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>패스워드</th>
+                    <th>회원등급</th>
+                    <th>아이피</th>
+                    <th>사용여부</th>
+                    <th>생성일자</th>
+                    <th>업데이트일자</th>
+                    <th>변경</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${item!=null and item.mbId != 'admin'}" th:each="item : ${items}">
+                    <td th:text="${item.mbId}"></td>
+                    <td th:text="${item.mbPw}"></td>
+                    <td th:text="${item.mbLevel}"></td>
+                    <td th:text="${item.mbIp}"></td>
+                    <td th:text="${item.mbUse}"></td>
+                    <td th:text="${item.mbCreateAt}"></td>
+                    <td th:text="${item.mbUpdateAt}"></td>
+                    <td style="display: flex; align-items: center; justify-content: center">
+                        <a th:href="@{/mbModify(id=${item.mbId}, pw=${item.mbPw}, level=${item.mbLevel}, seq=${item.mbSeq})}" class="btn btn-primary btn-sm">수정</a>
+                        <a th:href="@{/mbRemove(id=${item.mbId})}" class="btn btn-danger btn-sm">삭제</a>
+                    </td>
+                </tr>
+
+                <tr th:if="${item != null and item.mbId == 'admin'}">
+                    <!-- item.mbId가 "admin"인 경우, 해당 항목을 리스트에서 제외. -->
+                </tr>
+
+                <tr th:unless="${items}">
+                    <!-- items가 null이거나 빈 경우, "데이터가 없습니다"를 표시. -->
+                    <td colspan="8" style="padding: 60px 0">데이터가 없습니다</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
