@@ -18,7 +18,7 @@ public class DbConfig {
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://springboot.ctgte6k7v555.ap-northeast-2.rds.amazonaws.com:3306/springboot?autoReconnect=true&serverTimezone=UTC&characterEncoding=UTF-8");
+		dataSource.setUrl("jdbc:mysql://springboot.ctgte6k7v555.ap-northeast-2.rds.amazonaws.com:3306/springsns?autoReconnect=true&serverTimezone=UTC&characterEncoding=UTF-8");
 		dataSource.setUsername("admin");
 		dataSource.setPassword("adminadmin");
 		dataSource.setMaxIdle(5);
